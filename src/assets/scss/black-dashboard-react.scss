@@ -1,0 +1,37 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "../scss/black-dashboard-react/custom/variables";
+@import "~bootstrap/scss/mixins";
+.dark {
+    /* redefine theme colors for dark theme */
+    $primary: #4B4C4F;
+    $secondary: #111111;
+    $success: #222222;
+    $dark: #242526;
+    $theme-colors: ( "primary": $primary, "secondary": $secondary, "success": $success, "danger": $danger, "info": $indigo, "dark": $dark, "light": $light, );
+    /* redefine theme color variables */
+    @each $color,
+    $value in $theme-colors {
+        --#{$variable-prefix}#{$color}: #{$value};
+    }
+    /* redefine theme color rgb vars (used for bg- colors) */
+    $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+    @each $color,
+    $value in $theme-colors-rgb {
+        --#{$variable-prefix}#{$color}-rgb: #{$value};
+    }
+    $body-color: #eeeeee;
+    $body-bg: #18191A;
+    --#{$variable-prefix}body-color: #{$body-color};
+    --#{$variable-prefix}body-bg: #{$body-bg};
+    @import "bootstrap";
+}
+
+// Optional
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "../scss/custom.scss";
+// @import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
